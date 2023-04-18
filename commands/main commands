@@ -1,8 +1,7 @@
 to know command terraform --help 
-terraform init 
-terraform apply
-terraform validate
+terraform init
+terraform validate 
+terraform apply (this command askes to proceed to create type=yes or no)
 terraform plan
 terraform destroy
-
-
+terraform apply -auto-approve (this command is used to automate action to run )
