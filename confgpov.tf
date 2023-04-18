@@ -3,6 +3,6 @@ provider "aws" {
   access_key = "user-asses-key"
   secret_key = "user-secret-token"
 }
-but it is not good idea to give asseskey secret_key
-terraform can configure acceskey secret key from our server 
-authentication 
+but it is not good idea to give asseskey secretkey
+terraform =can configure acceskey secret key from our server
+authentication = aws_configure
