@@ -1,0 +1,8 @@
+to know command terraform --help 
+terraform init 
+terraform apply
+terraform validate
+terraform plan
+terraform destroy
+
+
