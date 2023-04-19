@@ -6,7 +6,7 @@ resource "aws_vpc" "myvpc" {
 }
 
 resource "aws_subnet" "subnets" {
-  count = 4
+  count = length(var.my_subnets)
   cidr_block        = var.my_subnets[count.index]
   availability_zone = "${var.region}${var.myAZ[count.index]}"
   vpc_id            = aws_vpc.myvpc.id # implicit dependency
