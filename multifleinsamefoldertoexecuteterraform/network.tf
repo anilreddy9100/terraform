@@ -17,3 +17,10 @@ resource "aws_subnet" "subnets" {
     aws_vpc.myvpc
   ]
 }
+
+resource "aws_internet_gateway" "myvpcigw" {
+  vpc_id = aws_vpc.myvpc.id
+  tags = {
+    name = "my-igw"
+  }
+}
