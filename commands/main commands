@@ -10,3 +10,4 @@ terraform apply -var "name of varable=<value>" (to pass varable value through co
 terraform apply -var-file <file name where varable values are present>
 terraform refresh
 terraform show (it shows current state what terrafom done)
+terrarfom destroy -var-file 
