@@ -9,6 +9,7 @@ terraform {
 }
 
 provider "aws" {
+  region = "ap-south-1" // we can use region were we need to create a resources
   # Configuration options
 }
 
