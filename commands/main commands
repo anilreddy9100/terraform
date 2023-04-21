@@ -1,4 +1,4 @@
-to know command terraform --help 
+to know commands terraform --help 
 terraform init
 terraform validate 
 terraform apply (this command askes to proceed to create type=yes or no)
@@ -6,3 +6,7 @@ terraform plan
 terraform destroy
 terraform apply -auto-approve (this command is used to automate action to run )
 terraform fmt
+terraform apply -var "name of varable=<value>" (to pass varable value through commind line)
+terraform apply -var-file <file name where varable values are present>
+terraform refresh
+terraform show (it shows current state what terrafom done)
