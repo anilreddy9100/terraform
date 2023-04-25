@@ -56,7 +56,7 @@ data "aws_subnets" "public" {
     values = var.vpc-creaction-info.public_subnets
   }
   filter {
-    name = "vpc-id"
+    name   = "vpc-id"
     values = [local.vpc_id]
   }
   depends_on = [
@@ -70,7 +70,7 @@ data "aws_subnets" "private" {
     values = var.vpc-creaction-info.private_subnets
   }
   filter {
-    name = "vpc-id"
+    name   = "vpc-id"
     values = [local.vpc_id]
   }
   depends_on = [
@@ -79,14 +79,14 @@ data "aws_subnets" "private" {
 
 }
 resource "aws_route_table_association" "mysbntpub" {
-  count = length(data.aws_subnets.public.ids)
+  count          = length(data.aws_subnets.public.ids)
   route_table_id = aws_route_table.public.id
-  subnet_id = data.aws_subnets.public.ids[count.index]
+  subnet_id      = data.aws_subnets.public.ids[count.index]
 
 }
 resource "aws_route_table_association" "mysbntpri" {
-  count = length(data.aws_subnets.private.ids)
+  count          = length(data.aws_subnets.private.ids)
   route_table_id = aws_route_table.private.id
-  subnet_id = data.aws_subnets.private.ids[count.index]
+  subnet_id      = data.aws_subnets.private.ids[count.index]
 }
 
