@@ -9,6 +9,10 @@ resource "aws_security_group" "dbsegp" {
   tags = {
     "name" = "mysql"
   }
+    vpc_id = local.vpc_id
+    depends_on = [
+      aws_subnet.subnets
+    ]
 
 }
 
