@@ -11,3 +11,25 @@ resource "aws_security_group" "dbsegp" {
   }
 
 }
+
+data "aws_subnets" "dbsubnet" {
+  filter {
+    name   = "tag:NAME"
+    values = var.vpc-creaction-info.db_subnets
+  }
+  filter {
+    name   = "vpc-id"
+    values = [local.vpc_id]
+  }
+  depends_on = [
+    aws_subnet.subnets
+  ]
+}
+resource "aws_db_subnet_group" "dbsbgp" {
+  name       = "dbsbgp"
+  subnet_ids = data.aws_subnets.dbsubnet.ids
+  depends_on = [
+    aws_subnet.subnets
+  ]
+
+}
