@@ -30,7 +30,8 @@ variable "vpc-creaction-info" {
     subnet_names    = list(string)
     public_subnets  = list(string)
     private_subnets = list(string)
-    db_subnets = list(string)
+    db_subnets      = list(string)
+    web1_subnet_ec2 = string
   })
   default = {
     subnet_azs      = ["a", "b", "a", "b"]
@@ -39,6 +40,7 @@ variable "vpc-creaction-info" {
     public_subnets  = []
     private_subnets = ["app1", "app2", "db1", "db2"]
     db_subnets      = ["db1", "db2"]
+    web1_subnet_ec2 = ""
   }
 
 }

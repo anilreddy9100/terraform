@@ -50,9 +50,9 @@ resource "aws_route_table" "public" {
     aws_subnet.subnets
   ]
 }
-data "aws_subnets" "public" {
+data "aws_subnets" "public1" {
   filter {
-    name   = "tag:NAME"
+    name   = "tag:Name"
     values = var.vpc-creaction-info.public_subnets
   }
   filter {
@@ -64,9 +64,9 @@ data "aws_subnets" "public" {
   ]
 
 }
-data "aws_subnets" "private" {
+data "aws_subnets" "private1" {
   filter {
-    name   = "tag:NAME"
+    name   = "tag:Name"
     values = var.vpc-creaction-info.private_subnets
   }
   filter {
@@ -78,15 +78,20 @@ data "aws_subnets" "private" {
   ]
 
 }
-resource "aws_route_table_association" "mysbntpub" {
-  count          = length(data.aws_subnets.public.ids)
+// first create subnets then subnets apply after creaction add resource aws_route_table_associction
+resource "aws_route_table_association" "public_associations" {
+  count          = length(data.aws_subnets.public1.ids)
   route_table_id = aws_route_table.public.id
-  subnet_id      = data.aws_subnets.public.ids[count.index]
+  subnet_id      = data.aws_subnets.public1.ids[count.index]
 
 }
-resource "aws_route_table_association" "mysbntpri" {
-  count          = length(data.aws_subnets.private.ids)
+
+resource "aws_route_table_association" "private_associations" {
+  count          = length(data.aws_subnets.private1.ids)
   route_table_id = aws_route_table.private.id
-  subnet_id      = data.aws_subnets.private.ids[count.index]
+  subnet_id      = data.aws_subnets.private1.ids[count.index]
+
 }
+
+
 
