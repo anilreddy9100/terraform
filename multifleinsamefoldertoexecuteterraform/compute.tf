@@ -46,14 +46,14 @@ data "aws_subnet" "web1sub_id" {
 }
 
 resource "aws_instance" "web_1" {
-  ami                         = data.aws_ami_ids.ubuntu_2204.id
+  ami                         = local.ami_id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
   subnet_id                   = data.aws_subnet.web1sub_id.id
   vpc_security_group_ids      = [aws_security_group.web.id]
-
-
-
+  tags = {
+    name = "web1"
+  }
   depends_on = [
     aws_db_instance.dbinstance,
     aws_security_group.web
