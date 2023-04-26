@@ -36,7 +36,7 @@ data "aws_ami_ids" "ubuntu_2204" {
 data "aws_subnet" "web1sub_id" {
   vpc_id = local.vpc_id
   filter {
-    name   = "tag:name"
+    name   = "tag:Name"
     values = [var.vpc-creaction-info.web1_subnet_ec2]
   }
   depends_on = [
@@ -46,7 +46,7 @@ data "aws_subnet" "web1sub_id" {
 }
 
 resource "aws_instance" "web_1" {
-  ami                         = local.ami_id
+  ami =                        local.ami_id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
   subnet_id                   = data.aws_subnet.web1sub_id.id

@@ -18,7 +18,7 @@ resource "aws_security_group" "dbsegp" {
 
 data "aws_subnets" "dbsubnet" {
   filter {
-    name   = "tag:NAME"
+    name   = "tag:Name"
     values = var.vpc-creaction-info.db_subnets
   }
   filter {
@@ -46,7 +46,7 @@ resource "aws_db_instance" "dbinstance" {
   engine_version         = "8.0.28"
   instance_class         = "db.t2.micro"
   password               = "rootroot"
-  username               = "database"
+  username               = "ANILREDDY"
   publicly_accessible    = false
   vpc_security_group_ids = [aws_security_group.dbsegp.id]
   skip_final_snapshot    = true

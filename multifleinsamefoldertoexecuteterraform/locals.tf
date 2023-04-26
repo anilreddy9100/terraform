@@ -6,4 +6,5 @@ locals {
   ssh_port   = 22
   http_port  = 80
   https_port = 443
+  ami_id = data.aws_ami_ids.ubuntu_2204.ids[0]
 }
